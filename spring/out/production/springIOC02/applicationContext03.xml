@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--    实验13：基于XML的自动装配-->
+    <bean id="car01" class="com.testcy.bean.Car">
+        <property name="carName" value="宝马"></property>
+        <property name="price" value="900000"></property>
+        <property name="color" value="黑色"></property>
+    </bean>
+
+<!--    <bean id="car" class="com.testcy.bean.Car">
+        <property name="carName" value="BMW"></property>
+        <property name="price" value="900000"></property>
+        <property name="color" value="黑色"></property>
+    </bean>-->
+    <!--
+            1、autowire="byName" 根据属性名(set方法后面的字符串首字符小写为属性名，与声明的属性名无关)作为id，去容器中去寻找相同的bean，找到就赋值，找不到就赋值为null
+            2、autowire="byType" 根据类型去容器中寻找，找到唯一的就赋值，找到不唯一就报错，找不到就赋值为null
+            3、autowire="constructor"
+               1、先根据构造器的参数的类型去容器中寻找bean，找到唯一的就赋值，找不到就赋值为null
+               2、找到不唯一，再将构造器的参数的值作为id去容器中匹配，匹配到就赋值，匹配不到久装配null
+
+    -->
+    <bean id="person01" class="com.testcy.bean.Person" autowire="byType">
+        <!--        <property name="car" ref="car01"></property>-->
+    </bean>
+
+    <bean id="book01" class="com.testcy.bean.Book">
+        <property name="bookName" value="book01"></property>
+    </bean>
+    <bean id="book02" class="com.testcy.bean.Book">
+        <property name="bookName" value="book02"></property>
+    </bean>
+    <bean id="book03" class="com.testcy.bean.Book">
+        <property name="bookName" value="book03"></property>
+    </bean>
+</beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--
+
+        实验11：测试bean的后置处理器-->
+    <!--实验10：创建带有生命周期方法的bean bean的创建和销毁
+    可以自定义初始化方法和销毁方法
+    he name of the custom destroy method to invoke on bean factory shutdown.
+    The method must have no arguments, but may throw any exception.
+    -->
+    <bean id="book01" class="com.testcy.bean.Book" init-method="myInit" destroy-method="destory">
+        <property name="author" value="Curry"></property>
+        <property name="bookName" value="敏捷从零开始"></property>
+    </bean>
+
+<!--    注册后置处理器-->
+    <bean id="myBeanPostProcessor" class="com.testcy.bean.MyBeanPostProcessor"></bean>
+
+    <bean  id="car01" class="com.testcy.bean.Car"></bean>
+</beans>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring.iml" filepath="$PROJECT_DIR$/spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springIOC01/springIOC01.iml" filepath="$PROJECT_DIR$/springIOC01/springIOC01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springIOC02/springIOC02.iml" filepath="$PROJECT_DIR$/springIOC02/springIOC02.iml" />
+    </modules>
+  </component>
+</project>

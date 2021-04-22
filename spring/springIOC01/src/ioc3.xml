@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--      实验9：测试bean的作用域，分别创建单实例和多实例的bean★-->
+    <!--    singleton单实例，默认就是单实例
+    注意：容器启动的时候就会创建实例
+    -->
+    <bean id="person01" class="com.testcy.bean.Person" scope="singleton"></bean>
+    <!--    prototype多实例
+    注意：容器启动的时候不会创建实例，在获取实例的时候才会创建实例
+    -->
+    <bean id="person02" class="com.testcy.bean.Person" scope="prototype"></bean>
+ <!--   ====================工厂方式创建bean==========
+    实验5：配置通过静态工厂方法创建的bean、实例工厂方法创建的bean、FactoryBean★-->
+<!--    注入静态工厂-->
+    <bean id="airPlane01" class="com.testcy.factory.AirPlaneStaticFactory" factory-method="getAirPlane">
+        <constructor-arg value="Curry"/>
+    </bean>
+<!--注入实例工厂-->
+    <bean id="airPlaneInstanceFactory" class="com.testcy.factory.AirPlaneInstanceFactory">
+    </bean>
+<!--先配置实例工厂对象，再配置需要创建的对象需要哪个工厂创建，使用factory-bean，并配置工厂方法和参数-->
+    <bean id="airPlane02" class="com.testcy.bean.AirPlane" factory-bean="airPlaneInstanceFactory" factory-method="getAirPlane">
+        <constructor-arg value="Tom"/>
+    </bean>
+<!--注入实现了FactoryBean接口的实现类的工厂bean，这个工厂类会被spring识别为工厂类，会自动调用getObject()方法创建对应实例-->
+    <bean id="myFactoryBean" class="com.testcy.factory.MyFactoryBeanImpl"></bean>
+</beans>
