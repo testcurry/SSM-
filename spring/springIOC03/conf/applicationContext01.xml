@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--    实验15：通过注解分别创建Dao、Service、Controller★-->
+
+    <!--    <context:component-scan base-package="com.testcy"></context:component-scan>-->
+    <!--    有了注解为什么还要用xml配置？如果想把第三方包也加入IOC容器，注解就无能为力了，但可以用xml配置其加入容器-->
+    <!--    <bean id="other" class="org.junit.internal.ArrayComparisonFailure"></bean>-->
+
+    <!--    实验16：使用context:include-filter指定扫描包时要包含的类
+                use-default-filters="false" 要禁用掉默认规则才能起效
+
+    -->
+     <!--   <context:component-scan base-package="com.testcy" use-default-filters="false">
+            <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        </context:component-scan>-->
+
+    <!--    实验17：使用context:exclude-filter指定扫描包时不包含的类
+            1、type="annotation" 表示按照注解过滤 expression=“”表示注解的全类名
+            2、type="assignable" 表示按照具体的类过滤 expression=“”表示类的全类名
+        以下三个一万年用不上
+            3、type="aspectj" aspectj表达式
+            4、type="custom" 自定义，实现TypeFilter接口
+            5、type="regex" 正则表达式
+    -->
+  <!--  <context:component-scan base-package="com.testcy">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>-->
+
+<!--    实验18：使用@Autowired注解实现根据类型实现自动装配★-->
+    <context:component-scan base-package="com.testcy"></context:component-scan>
+
+<!--    实验19：如果资源类型的bean不止一个，
+@Autowired注解自动装配原理：
+    @Autowired
+    private BookService bookService;
+1、先根据类型匹配，匹配到赋值，匹配不到就报错
+2、如果匹配到多个，再根据id去匹配，声明的成员变量名作为id去IOC容器中匹配bookService
+        a、根据id匹配到赋值
+        b、根据id匹配不到就报错  @Qualifier("bookService")可以使用这个让spring不使用变量名作为id去匹配，使用指定的id去匹配
+            @Qualifier指定的id如果再找不到就报错 @Autowired(required = false)//找不到就装配null
+-->
+
+
+
+<!--    默认根据@Autowired注解标记的成员变量名作为id查找bean，进行装配★-->
+<!--    实验20：如果根据成员变量名作为id还是找不到bean，-->
+<!--    可以使用@Qualifier注解明确指定目标bean的id★-->
+<!--    实验21：在方法的形参位置使用@Qualifier注解-->
+<!--    实验22：@Autowired注解的required属性指定某个属性允许不被设置-->
+</beans>
