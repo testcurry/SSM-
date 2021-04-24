@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--
+        基于注解的aop步骤
+        1、将目标类和切面类都加入IOC容器中
+        2、指定哪个是切面类@Aspect
+        3、指定切面类的通知方法在何时何地执行@Before @AfterReturning @Throwing @After
+        4、开启AOP功能
+    -->
+
+    <!--  不带环绕通知的多切面切入同一个方法的执行顺序：  -->
+    <!--
+        ValidateAspect普通前置通知【 add 】方法执行开始了！。。。参数列表是：【[1, 2]】
+        LogUtils普通前置通知【 add 】方法执行开始了！。。。参数列表是：【[1, 2]】
+        add方法执行了。。。
+        LogUtils普通返回通知【add】方法执行正常完成了！。。。计算结果是：【3】
+        LogUtils普通后置通知方法【add】执行最终结束了！
+        ValidateAspect普通返回通知【add】方法执行正常完成了！。。。计算结果是：【3】
+        ValidateAspect普通后置通知方法【add】执行最终结束了！
+        ValidateAspect普通前置通知【 div 】方法执行开始了！。。。参数列表是：【[1, 0]】
+        LogUtils普通前置通知【 div 】方法执行开始了！。。。参数列表是：【[1, 0]】
+        LogUtils普通异常通知方法【div】执行异常了，异常信息是：【java.lang.ArithmeticException: / by zero】
+        LogUtils普通后置通知方法【div】执行最终结束了！
+        ValidateAspect普通异常通知方法【div】执行异常了，异常信息是：【java.lang.ArithmeticException: / by zero】
+        ValidateAspect普通后置通知方法【div】执行最终结束了！
+    -->
+
+
+    <!--  带环绕通知的多切面切入同一个方法的执行顺序：  -->
+    <!--
+        ValidateAspect普通前置通知【 add 】方法执行开始了！。。。参数列表是：【[1, 2]】
+        环绕前置通知【 add 】方法执行开始了！。。。参数列表是：【[1, 2]】
+        LogUtils普通前置通知【 add 】方法执行开始了！。。。参数列表是：【[1, 2]】
+        add方法执行了。。。
+        环绕返回通知【add】方法执行正常完成了！。。。计算结果是：【3】
+        环绕后置通知方法【add】执行最终结束了！
+        LogUtils普通返回通知【add】方法执行正常完成了！。。。计算结果是：【3】
+        LogUtils普通后置通知方法【add】执行最终结束了！
+        ValidateAspect普通返回通知【add】方法执行正常完成了！。。。计算结果是：【3】
+        ValidateAspect普通后置通知方法【add】执行最终结束了！
+        ValidateAspect普通前置通知【 div 】方法执行开始了！。。。参数列表是：【[1, 0]】
+        环绕前置通知【 div 】方法执行开始了！。。。参数列表是：【[1, 0]】
+        LogUtils普通前置通知【 div 】方法执行开始了！。。。参数列表是：【[1, 0]】
+        环绕异常通知方法【div】执行异常了，异常信息是：【java.lang.ArithmeticException: / by zero】
+        环绕后置通知方法【div】执行最终结束了！
+        LogUtils普通异常通知方法【div】执行异常了，异常信息是：【java.lang.RuntimeException: java.lang.ArithmeticException: / by zero】
+        LogUtils普通后置通知方法【div】执行最终结束了！
+        ValidateAspect普通异常通知方法【div】执行异常了，异常信息是：【java.lang.RuntimeException: java.lang.ArithmeticException: / by zero】
+        ValidateAspect普通后置通知方法【div】执行最终结束了！
+    -->
+
+    <bean id="myMathCalculator" class="com.testcy.impl.MyMathCalculator"></bean>
+    <bean id="logUtils" class="com.testcy.utils.LogUtils"></bean>
+    <bean id="validateAspect" class="com.testcy.utils.ValidateAspect"></bean>
+
+    <aop:config>
+        <aop:pointcut id="myPoint" expression="execution(public * com.testcy..*(int ,*))"/>
+        <aop:aspect ref="validateAspect">
+            <aop:before method="logStart" pointcut="execution(public * com.testcy..*.*(*,*))"></aop:before>
+            <aop:after-returning method="logReturn" pointcut-ref="myPoint" returning="result"></aop:after-returning>
+            <aop:after-throwing method="logExecption" pointcut-ref="myPoint" throwing="e"></aop:after-throwing>
+            <aop:after method="logEnd" pointcut-ref="myPoint"></aop:after>
+        </aop:aspect>
+        <aop:aspect ref="logUtils">
+            <aop:before method="logStart" pointcut-ref="myPoint"></aop:before>
+            <aop:after-returning method="logReturn" pointcut-ref="myPoint" returning="result"></aop:after-returning>
+            <aop:after-throwing method="logExecption" pointcut-ref="myPoint" throwing="e"></aop:after-throwing>
+            <aop:after method="logEnd" pointcut-ref="myPoint"></aop:after>
+            <!--     环绕通知       -->
+            <aop:around method="MyAround" pointcut-ref="myPoint"></aop:around>
+        </aop:aspect>
+    </aop:config>
+
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+</beans>

@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--    实验13：基于XML的自动装配-->
+    <!--    实验13：基于XML的自动装配 仅限于自定义类型的属性-->
     <bean id="car01" class="com.testcy.bean.Car">
         <property name="carName" value="宝马"></property>
         <property name="price" value="900000"></property>
