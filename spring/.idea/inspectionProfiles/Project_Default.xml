@@ -4,5 +4,6 @@
     <inspection_tool class="SpringHandlersSchemasHighlighting" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="SpringJavaInjectionPointsAutowiringInspection" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="SpringXmlAutowiringInspection" enabled="true" level="TYPO" enabled_by_default="true" />
+    <inspection_tool class="WebProperties" enabled="true" level="TYPO" enabled_by_default="true" />
   </profile>
 </component>
