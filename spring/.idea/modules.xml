@@ -13,8 +13,11 @@
       <module fileurl="file://$PROJECT_DIR$/springIOC04/springIOC04.iml" filepath="$PROJECT_DIR$/springIOC04/springIOC04.iml" />
       <module fileurl="file://$PROJECT_DIR$/springJDBCTemplate/springJDBCTemplate.iml" filepath="$PROJECT_DIR$/springJDBCTemplate/springJDBCTemplate.iml" />
       <module fileurl="file://$PROJECT_DIR$/springMVC01/springMVC01.iml" filepath="$PROJECT_DIR$/springMVC01/springMVC01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMVC02/springMVC02.iml" filepath="$PROJECT_DIR$/springMVC02/springMVC02.iml" />
       <module fileurl="file://$PROJECT_DIR$/springTX01/springTX01.iml" filepath="$PROJECT_DIR$/springTX01/springTX01.iml" />
       <module fileurl="file://$PROJECT_DIR$/springTX02/springTX02.iml" filepath="$PROJECT_DIR$/springTX02/springTX02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc03/springmvc03.iml" filepath="$PROJECT_DIR$/springmvc03/springmvc03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc04/springmvc04.iml" filepath="$PROJECT_DIR$/springmvc04/springmvc04.iml" />
     </modules>
   </component>
 </project>

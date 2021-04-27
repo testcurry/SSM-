@@ -9,20 +9,15 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
-        <sourceRoots />
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="web springDispatcherServlet servlet context" name="MVC springDispatcherServlet servlet context" removed="true">
-          <file>file://$MODULE_DIR$/conf/springmvc.xml</file>
+        <fileset id="web springmvc servlet context" name="MVC springmvc servlet context" removed="true">
+          <file>file://$MODULE_DIR$/web/WEB-INF/springmvc-servlet.xml</file>
         </fileset>
-        <fileset id="fileset" name="SpringMVC" removed="false">
-          <file>file://$MODULE_DIR$/conf/springDispatcherServlet.xml</file>
-        </fileset>
-        <fileset id="fileset2" name="SpringDispatcherServlet Servlet" removed="false">
-          <file>file://$MODULE_DIR$/web/WEB-INF/springDispatcherServlet-servlet.xml</file>
-          <file>file://$MODULE_DIR$/conf/springDispatcherServlet.xml</file>
+        <fileset id="fileset" name="SpringMVC02" removed="false">
+          <file>file://$MODULE_DIR$/web/WEB-INF/springmvc-servlet.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -30,7 +25,6 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/conf" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />

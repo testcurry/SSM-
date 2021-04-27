@@ -16,6 +16,9 @@
   <a href="hhh/handle01">标注在类上的RequestMapping</a><br>
   <a href="hhh/handle02">带属性的RequestMapping</a><br>
   <a href="hhh/handle03?username=hhh">带param属性的RequestMapping</a><br>
-  <a href="hhh/handle04">带headers属性的RequestMapping</a>
+  <a href="hhh/handle04">带headers属性的RequestMapping</a><br>
+  <a href="hhh/handle04">带headers属性的RequestMapping</a><br>
+  <a href="antTest01">ant通配符的RequestMapping</a><br>
+  <a href="user/admin">PathVariable的RequestMapping</a><br>
   </body>
 </html>
