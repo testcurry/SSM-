@@ -16,6 +16,7 @@
       <module fileurl="file://$PROJECT_DIR$/springMVC02/springMVC02.iml" filepath="$PROJECT_DIR$/springMVC02/springMVC02.iml" />
       <module fileurl="file://$PROJECT_DIR$/springTX01/springTX01.iml" filepath="$PROJECT_DIR$/springTX01/springTX01.iml" />
       <module fileurl="file://$PROJECT_DIR$/springTX02/springTX02.iml" filepath="$PROJECT_DIR$/springTX02/springTX02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-ajax/springmvc-ajax.iml" filepath="$PROJECT_DIR$/springmvc-ajax/springmvc-ajax.iml" />
       <module fileurl="file://$PROJECT_DIR$/springmvc03/springmvc03.iml" filepath="$PROJECT_DIR$/springmvc03/springmvc03.iml" />
       <module fileurl="file://$PROJECT_DIR$/springmvc04/springmvc04.iml" filepath="$PROJECT_DIR$/springmvc04/springmvc04.iml" />
       <module fileurl="file://$PROJECT_DIR$/springmvc05-viewResolver/springmvc05-viewResolver.iml" filepath="$PROJECT_DIR$/springmvc05-viewResolver/springmvc05-viewResolver.iml" />
