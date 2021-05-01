@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.testcy" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <!--导入spring的配置文件-->
+<!--    <import resource="classpath:spring.xml"></import>-->
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="#{1024*1024*20}"></property>
+        <property name="defaultEncoding" value="UTF-8"></property>
+    </bean>
+
+    <!--   &lt;!&ndash;    配置拦截器&ndash;&gt;
+       <mvc:interceptors>
+           &lt;!&ndash;        第一种方式,默认拦截所有请求&ndash;&gt;
+           &lt;!&ndash;                <bean class="com.testcy.controller.MyInterceptorController01"></bean>&ndash;&gt;
+           &lt;!&ndash;        第二种方式。具体配置某个拦截器&ndash;&gt;
+           <mvc:interceptor>
+               <mvc:mapping path="/test01"/>
+               <bean class="com.testcy.controller.MyInterceptorController02"></bean>
+           </mvc:interceptor>
+       </mvc:interceptors>-->
+
+    <!--    -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.NullPointerException">error</prop>
+            </props>
+        </property>
+        <property name="exceptionAttribute" value="errorMsg"></property>
+    </bean>
+</beans>

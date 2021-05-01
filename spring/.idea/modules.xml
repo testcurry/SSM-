@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/spring.iml" filepath="$PROJECT_DIR$/spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-springmvc-merge/spring-springmvc-merge.iml" filepath="$PROJECT_DIR$/spring-springmvc-merge/spring-springmvc-merge.iml" />
       <module fileurl="file://$PROJECT_DIR$/springAOP01/springAOP01.iml" filepath="$PROJECT_DIR$/springAOP01/springAOP01.iml" />
       <module fileurl="file://$PROJECT_DIR$/springAOP02/springAOP02.iml" filepath="$PROJECT_DIR$/springAOP02/springAOP02.iml" />
       <module fileurl="file://$PROJECT_DIR$/springAOP03/springAOP03.iml" filepath="$PROJECT_DIR$/springAOP03/springAOP03.iml" />
@@ -20,6 +21,7 @@
       <module fileurl="file://$PROJECT_DIR$/springmvc03/springmvc03.iml" filepath="$PROJECT_DIR$/springmvc03/springmvc03.iml" />
       <module fileurl="file://$PROJECT_DIR$/springmvc04/springmvc04.iml" filepath="$PROJECT_DIR$/springmvc04/springmvc04.iml" />
       <module fileurl="file://$PROJECT_DIR$/springmvc05-viewResolver/springmvc05-viewResolver.iml" filepath="$PROJECT_DIR$/springmvc05-viewResolver/springmvc05-viewResolver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvcInterceptor/springmvcInterceptor.iml" filepath="$PROJECT_DIR$/springmvcInterceptor/springmvcInterceptor.iml" />
     </modules>
   </component>
 </project>
