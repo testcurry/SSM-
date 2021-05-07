@@ -3,9 +3,26 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
+<!--引入外部配置文件-->
     <properties resource="jdbc.properties"></properties>
+<!--开启驼峰命名，login_account会映射到javabean的loginAccount-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
 
+<!--    给javabean起别名，默认是类名，不区分大小写-->
+    <typeAliases>
+<!--        <typeAlias type="com.testcy.bean.Employee" alias="emp"></typeAlias>-->
+<!--        批量起别名，默认别名是类名-->
+<!--        <package name="com.testcy.bean"/>-->
+<!--        推荐不起别名，因为可读性不好，无法第一眼就识别返回值类型的Javabean-->
+    </typeAliases>
+
+<!--    自定义类型处理器-->
+  <!--  <typeHandlers>
+        <typeHandler handler=""></typeHandler>
+    </typeHandlers>-->
+    
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -18,8 +35,18 @@
         </environment>
     </environments>
 
+    <!--    数据库移植-->
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="MySQL" value="mysql"/>
+        <property name="SQL Server" value="sqlserver"/>
+        <property name="Oracle" value="oracle"/>
+    </databaseIdProvider>
+
     <mappers>
-        <mapper resource="EmployeeMapper.xml"/>
+<!--        <mapper resource="EmployeeMapper.xml"/>-->
+<!--        <mapper class="com.testcy.mapper.EmployeeAnnotationMapper"></mapper>-->
+        <package name="com.testcy.mapper"/>
+
     </mappers>
 
 </configuration>
