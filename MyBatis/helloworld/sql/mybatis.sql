@@ -13,3 +13,10 @@ CREATE TABLE `mybatisdb`.`t_employee`
     `gender`  INT(1),
     `email`   VARCHAR(100)
 );
+
+CREATE TABLE `mybatisdb`.`t_cat` (
+    `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+    `cName` VARCHAR(100) NOT NULL,
+    `cAge` INT(2) NOT NULL,
+     `cGender` INT(1) NOT NULL,
+      );

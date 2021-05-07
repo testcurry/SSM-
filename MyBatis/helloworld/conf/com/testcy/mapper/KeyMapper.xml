@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testcy.mapper.KeyMapper">
+    <select id="getKeyById" resultMap="mykey">
+        SELECT k.id, k.keyname, k.lockid, l.id lid, l.lockname
+        FROM `t_key` `k`
+                 LEFT JOIN
+             `t_lock` `l` ON k.lockid = l.id
+        WHERE k.id = #{id}
+    </select>
+
+    <resultMap id="mykey" type="com.testcy.bean.Key">
+        <id property="id" column="id"></id>
+        <result property="keyName" column="keyname"></result>
+        <result property="lock.id" column="lockid"></result>
+        <result property="lock.lockName" column="lockname"></result>
+        <result property="lock.id" column="lid"></result>
+    </resultMap>
+
+</mapper>
