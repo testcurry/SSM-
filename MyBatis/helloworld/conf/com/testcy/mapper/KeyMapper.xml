@@ -11,13 +11,26 @@
              `t_lock` `l` ON k.lockid = l.id
         WHERE k.id = #{id}
     </select>
-
+    <!--    方式一级联属性查询-->
+    <!--
     <resultMap id="mykey" type="com.testcy.bean.Key">
         <id property="id" column="id"></id>
         <result property="keyName" column="keyname"></result>
         <result property="lock.id" column="lockid"></result>
         <result property="lock.lockName" column="lockname"></result>
         <result property="lock.id" column="lid"></result>
+    </resultMap>-->
+
+    <!--    方式二-->
+    <resultMap id="mykey" type="com.testcy.bean.Key">
+        <id property="id" column="id"></id>
+        <result property="keyName" column="keyName"></result>
+        <association property="lock" javaType="com.testcy.bean.Lock">
+            <id property="id" column="id"></id>
+            <result property="lockName" column="lockName"></result>
+        </association>
     </resultMap>
+
+
 
 </mapper>

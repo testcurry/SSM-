@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testcy.mapper.LockMapper">
+
+    <select id="getLockById" resultMap="mylock">
+        SELECT l.id, l.lockname, k.id kid, k.keyname, k.lockid
+        FROM t_lock l
+                 LEFT JOIN t_key k
+                           ON l.id = k.lockid
+        WHERE l.id = #{id}
+    </select>
+
+    <resultMap id="mylock" type="com.testcy.bean.Lock">
+        <id property="id" column="id"></id>
+        <result property="lockName" column="lockname"></result>
+        <collection property="keys" ofType="com.testcy.bean.Key">
+            <id property="id" column="kid"></id>
+            <result property="keyName" column="keyname"></result>
+         <!--   <association property="lock" javaType="com.testcy.bean.Lock">
+                <id property="id" column="id"></id>
+                <result property="lockName" column="lockname"></result>
+            </association>-->
+        </collection>
+    </resultMap>
+
+</mapper>

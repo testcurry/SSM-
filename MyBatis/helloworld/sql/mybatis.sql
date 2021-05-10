@@ -14,9 +14,23 @@ CREATE TABLE `mybatisdb`.`t_employee`
     `email`   VARCHAR(100)
 );
 
-CREATE TABLE `mybatisdb`.`t_cat` (
-    `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
-    `cName` VARCHAR(100) NOT NULL,
-    `cAge` INT(2) NOT NULL,
-     `cGender` INT(1) NOT NULL,
-      );
+CREATE TABLE `mybatisdb`.`t_cat`
+(
+    `id`      INT(11) PRIMARY KEY AUTO_INCREMENT,
+    `cName`   VARCHAR(100) NOT NULL,
+    `cAge`    INT(2) NOT NULL,
+    `cGender` INT(1) NOT NULL,
+);
+
+CREATE TABLE `mybatisdb`.`t_student`
+(
+    `id`      INT(11) PRIMARY KEY AUTO_INCREMENT,
+    `stuName` VARCHAR(20)
+);
+
+CREATE TABLE `mybatisdb`.`t_teacher`
+(
+    `id`          INT(11)  PRIMARY KEY  AUTO_INCREMENT,
+    `teacherName` VARCHAR(20),
+
+);

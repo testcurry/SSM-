@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testcy.mapper.TeacherMapper">
+
+    <sql id="baseSql">
+        select *
+        from t_teacher
+    </sql>
+
+    <select id="getTeacherByIdInclude" resultMap="Teacher">
+        <include refid="baseSql"></include>
+        <where>
+            id=#{id}
+        </where>
+    </select>
+
+    <select id="getTeacherById" resultMap="Teacher">
+
+        select *
+        from t_teacher
+        where id = #{id}
+    </select>
+
+    <resultMap id="Teacher" type="com.testcy.bean.Teacher">
+        <id property="id" column="id"></id>
+        <result property="name" column="teacherName"></result>
+        <result property="course" column="class_name"></result>
+        <result property="adress" column="adress"></result>
+        <result property="birth" column="birth_date"></result>
+    </resultMap>
+
+    <select id="getTeacherByCondition" resultMap="Teacher">
+        select * from t_teacher
+        <trim prefix="where" prefixOverrides="and" suffixOverrides="and">
+            <!--where标签可以去除前面的and，后面的and去不掉-->
+            <!--  <where>-->
+            <if test="id!=null">
+                id>=#{id} and
+            </if>
+            <if test="name!=null and !name.equals(&quot;&quot;)">
+                teacherName like #{name } and
+            </if>
+            <if test="birth!=null">
+                birth_date &lt; #{birth} and
+            </if>
+        </trim>
+        <!--        </where>-->
+    </select>
+
+    <select id="getTeacherByIn" resultMap="Teacher">
+        select * from t_teacher where id in
+        <foreach collection="ids" index="i" open="(" item="item" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="getTeacherByConditionChoose" resultMap="Teacher">
+        select * from t_teacher
+        <where>
+            <choose>
+                <when test="id!=null">
+                    id=#{id}
+                </when>
+                <when test="name!=null and !name.equals(&quot;&quot;)">
+                    teacherName=#{name}
+                </when>
+                <when test="birth!=null">
+                    birth_date=#{birth}
+                </when>
+                <otherwise>
+                    1=1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <update id="updateTeacher">
+        UPDATE t_teacher
+        <set>
+            <if test="name!=null and !name.equals(&quot;&quot;)">
+                teacherName=#{name },
+            </if>
+            <if test="course!=null and !course.equals(&quot;&quot;)">
+                class_name=#{course},
+            </if>
+            <if test="address!=null and !address.equals(&quot;&quot;)">
+                address=#{address},
+            </if>
+            <if test="birth!=null and !birth.equals(&quot;&quot;)">
+                birth_date=#{birth}
+            </if>
+        </set>
+
+        <where>
+            id = #{id}
+        </where>
+
+    </update>
+
+
+</mapper>

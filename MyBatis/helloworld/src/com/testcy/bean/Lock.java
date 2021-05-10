@@ -1,9 +1,12 @@
 package com.testcy.bean;
 
+import java.util.List;
+
 public class Lock {
 
     private Integer id;
     private String lockName;
+    private List<Key> keys;
 
     public Lock() {
     }
@@ -29,11 +32,20 @@ public class Lock {
         this.lockName = lockName;
     }
 
+    public List<Key> getKeys() {
+        return keys;
+    }
+
+    public void setKeys(List<Key> keys) {
+        this.keys = keys;
+    }
+
     @Override
     public String toString() {
         return "Lock{" +
                 "id=" + id +
                 ", lockName='" + lockName + '\'' +
+                ", keys=" + keys +
                 '}';
     }
 }
