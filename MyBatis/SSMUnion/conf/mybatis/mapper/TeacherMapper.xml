@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testcy.mapper.TeacherMapper">
+
+    <resultMap id="Teacher" type="com.testcy.bean.Teacher">
+        <id property="id" column="id"></id>
+        <result property="name" column="teacherName"></result>
+        <result property="course" column="class_name"></result>
+        <result property="adress" column="adress"></result>
+        <result property="birth" column="birth_date"></result>
+    </resultMap>
+
+    <select id="getTeacherById" resultMap="Teacher">
+        select * from t_teacher where id=#{id}
+    </select>
+
+</mapper>

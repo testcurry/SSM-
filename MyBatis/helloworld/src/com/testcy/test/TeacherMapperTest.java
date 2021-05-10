@@ -28,6 +28,50 @@ public class TeacherMapperTest {
     }
 
     @Test
+    public void test03(){
+        SqlSession sqlSession1 = sqlSessionFactory.openSession();
+        TeacherMapper mapper = sqlSession1.getMapper(TeacherMapper.class);
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        TeacherMapper mapper1 = sqlSession2.getMapper(TeacherMapper.class);
+        Teacher t1 = mapper.getTeacherById(1);
+        System.out.println(t1);
+        sqlSession1.close();
+        Teacher t2 = mapper1.getTeacherById(1);
+        System.out.println(t2);
+        sqlSession2.close();
+    }
+
+    @Test
+    public void test02(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
+            Teacher teacher = mapper.getTeacherById(1);
+            System.out.println(teacher);
+            System.out.println("=========");
+        } finally {
+            sqlSession.close();
+
+        }
+     /*   SqlSession sqlSession1 = sqlSessionFactory.openSession();
+        TeacherMapper mapper1 = sqlSession1.getMapper(TeacherMapper.class);
+        Teacher teacher2 = mapper1.getTeacherById(1);
+        System.out.println(teacher2);*/
+    }
+
+    @Test
+    public void test01(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
+        Teacher teacher = mapper.getTeacherById(1);
+        System.out.println(teacher);
+        System.out.println("=========");
+        Teacher teacher2 = mapper.getTeacherById(1);
+        System.out.println(teacher2);
+        System.out.println(teacher2==teacher);
+    }
+
+    @Test
     public void getTeacherByCondition() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);

@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.testcy.mapper.TeacherMapper">
-
+<!--    <cache></cache>-->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"></cache>
     <sql id="baseSql">
         select *
         from t_teacher

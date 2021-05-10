@@ -1,8 +1,9 @@
 package com.testcy.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Teacher {
+public class Teacher /*implements Serializable*/ {
 
     private Integer id;
     private String name;

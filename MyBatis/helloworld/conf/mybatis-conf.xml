@@ -8,6 +8,7 @@
 <!--开启驼峰命名，login_account会映射到javabean的loginAccount-->
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
 <!--    给javabean起别名，默认是类名，不区分大小写-->
